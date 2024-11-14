@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 20%),
+                radial-gradient(circle, rgba(255, 255, 255, 0.2) 20%, transparent 20%);
+    background-size: 10% 10%, 15% 15%;
+    animation: float 2s infinite alternate ease-in-out;
+    z-index: -4;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(221, 75, 99);
+    font-family: Arial, sans-serif;
+}
+
+.card-container {
+    display: flex;
+    gap: 50px;
+}
+
+.card {
+    width: 350px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: rgb(241, 135, 236);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+    position: relative;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 500px; 
+    object-fit: cover; 
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.card-description {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover .card-description {
+    opacity: 1;
+}
+
+.more-info {
+    display: none;
+    padding: 10px;
+    background-color: #fafafa;
+    border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.more-info.visible {
+    display: block;
+    opacity: 1;
+}
